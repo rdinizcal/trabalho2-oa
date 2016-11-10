@@ -1,29 +1,44 @@
 #include <iostream>
 #include <limits>
+#include <fstream>
+#include <string.h>
 
+#include "../lib/CrtArvoreB.h"
 #include "../lib/utils.h"
-/*#include "../lib/memory.h"
-#include "../lib/crtMemory.h"
-*/
+
 
 int main (int argc, char *argv[]){
 
-	int choice=0;
-/*	Memory *myMemory = new Memory;
-	int files=0;*/
-	bool success=false;
+	CrtArvoreB crtArvoreB;
 
-	if(argc != 2){
+	std::string fileName;
+	std::string fileType;
+
+	int choice = 0;
+	bool success = false;
+
+	if(argc != 4 || strcmp(argv[2],"-r") != 0 ){
+		std::cout<<"Uso incorreto do programa. (main data.txt -r (1|2))"<<std::endl;
+		return 0;
+	}
+
+	if(!strcmp(argv[3],"1")){
+		std::cout<<"Registro de tamanho variavel."<<std::endl;
+		fileType = "rvar";
+	}else if(!strcmp(argv[3],"2")){
+		std::cout<<"Registro de tamanho fixo."<<std::endl;
+		fileType = "rfixo";
+	} else {
 		std::cout<<"Uso incorreto do programa."<<std::endl;
 		return 0;
 	}
 
+	fileName=argv[1];
+	crtArvoreB.setUp(fileType,fileName);
+
 	while(true){
 
-		Utils util;
-		/*CrtMemory memoryController;*/
-		
-
+		Utils util;		
 		util.clear();
 
 		std::cout<<"**********MENU PRINCIPAL**********"<<std::endl;
@@ -61,10 +76,5 @@ int main (int argc, char *argv[]){
 		std::getchar();
 	}
 
-	delete[] myMemory;	/*
-	std::cout << "Press enter to continue . . . ";
-	std::cin.sync();
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	*/
 	return 0;
 }

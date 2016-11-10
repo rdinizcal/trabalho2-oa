@@ -9,14 +9,20 @@
 
 class ArvoreB{
 private:
+	int height;
 	std::map<int, No> mapNo;
 	
 public:
 	ArvoreB();
 	~ArvoreB();
 
-	void ArvoreB::setMapNo(int mapNo);
-	int ArvoreB::getMapNo();
+	bool insert(int, int);
+
+	void setHeight(int height);
+	int getHeight();
+
+	void setMapNo(std::map<int,No> mapNo);
+	std::map<int,No> getMapNo();
 };
 
 #endif

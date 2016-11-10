@@ -1,10 +1,10 @@
 #include "../lib/No.h"
 
 /**************************CONSTRUTOR**************************/
-No::No(){
+/*No::No(){
 
 	std::cout<<"Objeto de No criado."<<std::endl;
-}
+}*/
 
 /**************************DESTRUTOR**************************/
 No::~No(){
@@ -14,45 +14,54 @@ No::~No(){
 
 
 /**************************METODOS PUBLICOS**************************/
-void No::insertNode(){
-
-}
-
-void No::selectNode(){
-
-}
 
 
 /**************************SETTERS & GETTERS**************************/
-void No::setContador(int contador){
-	this.contador = contador;
+void No::setNivel(int n){
+	nivel = n;
 }
 
-void No::setContador(int contador){
-	return this.contador;
+int No::getNivel(){
+	return nivel;
 }
 
-void No::setChave(vector<int>  chave){
-	this.chave = chave;
+void No::setPagina(int p){
+	pagina = p;
 }
 
-vector<int>  No::getChave(){
-	return this.chave;
+int No::getPagina(){
+	return pagina;
 }
 
-void No::setPrr(vector<int> prr){
-	this.prr = prr;
+void No::setContador(int c){
+	contador = c;
 }
 
-vector<int>  No::getPrr(){
-	return this.prr;
+int No::getContador(){
+	return contador;
 }
 
-void No::setFilho(vector<int> filho){
-	this.filho = filho;
+void No::setChave(std::vector<int> c){
+	chave = c;
 }
 
-vector<int> No::getFilho(){
-	return this.filho;
+std::vector<int>  No::getChave(){
+	return chave;
+}
+
+void No::setPrr(std::vector<int> p){
+	prr = p;
+}
+
+std::vector<int>  No::getPrr(){
+	return prr;
+}
+
+void No::setFilho(std::vector<int> f){
+	filho = f;
+}
+
+std::vector<int> No::getFilho(){
+	return filho;
 }
 

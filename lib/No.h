@@ -1,35 +1,41 @@
 #ifndef NO_H
 #define NO_H
 
-#define ORDEM 5
-
 #include <vector>
+#include <iostream>
 
 class No{
 private:
+	static int id;
+	int nivel;
+	int pagina;
 	int contador;
-	std::vector<int> chave(ORDEM-2);
-	std::vector<int> prr(ORDEM-2);
-	std::vector<int> filho(ORDEM-1);
+	std::vector<int> chave;
+	std::vector<int> prr;
+	std::vector<int> filho;
 
 
 public:
-	No();
+	No(): pagina(id++){};
 	~No();
 
-	void insertNode();
+	void setNivel(int nivel);
+	int getNivel();
+
+	void setPagina(int pagina);
+	int getPagina();
 
 	void setContador(int contador);
 	int getContador();
 
-	void setChave(vector<int> chave);
-	vector<int> getChave();
+	void setChave(std::vector<int> chave);
+	std::vector<int> getChave();
 
-	void No::setPrr(vector<int> prr);
-	vector<int> getPrr();
+	void setPrr(std::vector<int> prr);
+	std::vector<int> getPrr();
 
-	void setFilho(vector<int> filho);
-	vector<int> getFilho();
+	void setFilho(std::vector<int> filho);
+	std::vector<int> getFilho();
 };
 
 #endif

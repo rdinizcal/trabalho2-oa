@@ -7,6 +7,7 @@
 class RegVariavel{
 private:
 	int chavePrimaria;
+	int prr;
 	std::string nome;
 	std::string sobrenome;
 	std::string empresa;
@@ -23,35 +24,38 @@ public:
 	RegVariavel();
 	~RegVariavel();
 
-	void RegVariavel::setChavePrimaria(int chavePrimaria);
-	int RegVariavel::getChavePrimaria();
+	void setChavePrimaria(int chavePrimaria);
+	int getChavePrimaria();
 
-	void RegVariavel::setNome(std::string nome);
-	std::string RegVariavel::getNome();
+	void setPrr(int prr);
+	int getPrr();
 
-	void RegVariavel::setSobrenome(std::string sobrenome);
-	std::string RegVariavel::getSobrenome();
+	void setNome(std::string nome);
+	std::string getNome();
 
-	void RegVariavel::setEmpresa(std::string empresa);
-	std::string RegVariavel::getEmpresa();
+	void setSobrenome(std::string sobrenome);
+	std::string getSobrenome();
 
-	void RegVariavel::setEndereco(std::string endereco);
-	std::string RegVariavel::getEndereco();
+	void setEmpresa(std::string empresa);
+	std::string getEmpresa();
 
-	void RegVariavel::setCidade(std::string cidade);
-	std::string RegVariavel::getCidade();
+	void setEndereco(std::string endereco);
+	std::string getEndereco();
 
-	void RegVariavel::setEstado(std::string estado);
-	std::string RegVariavel::getEstado();
+	void setCidade(std::string cidade);
+	std::string getCidade();
 
-	void RegVariavel::setCEP(std::string cep);
-	std::string RegVariavel::getCEP();
+	void setEstado(std::string estado);
+	std::string getEstado();
 
-	void RegVariavel::setPhone1(std::string phone1);
-	std::string RegVariavel::getPhone1();
+	void setCEP(std::string cep);
+	std::string getCEP();
 
-	void RegVariavel::setPhone2(std::string phone2);
-	std::string RegVariavel::getPhone2();
+	void setPhone1(std::string phone1);
+	std::string getPhone1();
+
+	void setPhone2(std::string phone2);
+	std::string getPhone2();
 
 	
 };

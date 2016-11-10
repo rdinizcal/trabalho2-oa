@@ -14,90 +14,93 @@ RegVariavel::~RegVariavel(){
 
 
 /**************************METODOS PUBLICOS**************************/
-void RegVariavel::insertReg(){
-}
-
-void RegVariavel::selectReg(){
-}
 
 
 /**************************SETTERS & GETTERS**************************/
-void RegVariavel::setChavePrimaria(int chavePrimaria){
-	this.chavePrimaria = chavePrimaria;
+void RegVariavel::setChavePrimaria(int chave){
+	chavePrimaria = chave;
 }
 
 int RegVariavel::getChavePrimaria(){
-	return this.chavePrimaria;
+	return chavePrimaria;
 }
 
-void RegVariavel::setNome(std::string nome){
-	this.nome = nome;
+void RegVariavel::setPrr(int p){
+	prr = p;
+}
+
+int RegVariavel::getPrr(){
+	return prr;
+}
+
+void RegVariavel::setNome(std::string n){
+	nome = n;
 }
 
 std::string RegVariavel::getNome(){
-	return this.nome;
+	return nome;
 }
 
-void RegVariavel::setSobrenome(std::string sobrenome){
-	this.sobrenome = sobrenome;
+void RegVariavel::setSobrenome(std::string sn){
+	sobrenome = sn;
 }
 
 std::string RegVariavel::getSobrenome(){
-	return this.sobrenome;
+	return sobrenome;
 }
 
-void RegVariavel::setEmpresa(std::string empresa){
-	this.empresa = empresa;
+void RegVariavel::setEmpresa(std::string e){
+	empresa = e;
 }
 
 std::string RegVariavel::getEmpresa(){
-	return this.empresa;
+	return empresa;
 }
 
-void RegVariavel::setEndereco(std::string endereco){
-	this.endereco = endereco;
+void RegVariavel::setEndereco(std::string e){
+	endereco = e;
 }
 
 std::string RegVariavel::getEndereco(){
-	return this.endereco;
+	return endereco;
 }
 
-void RegVariavel::setCidade(std::string cidade){
-	this.cidade = cidade;
+void RegVariavel::setCidade(std::string c){
+	cidade = c;
 }
 
 std::string RegVariavel::getCidade(){
-	return this.cidade;
+	return cidade;
 }
 
-void RegVariavel::setEstado(std::string estado){
-	this.estado = estado;
+void RegVariavel::setEstado(std::string e){
+	estado = e;
 }
 
 std::string RegVariavel::getEstado(){
-	return this.estado;
+	return estado;
 }
 
-void RegVariavel::setCEP(std::string cep){
-	this.cep = cep;
+void RegVariavel::setCEP(std::string c){
+	cep = c;
 }
 
 std::string RegVariavel::getCEP(){
-	return this.cep;
+	return cep;
 }
 
-void RegVariavel::setPhone1(std::string phone1){
-	this.phone1 = phone1;
+void RegVariavel::setPhone1(std::string p1){
+	phone1 = p1;
 }
 
 std::string RegVariavel::getPhone1(){
-	return this.phone1;
+	return phone1;
 }
 
-void RegVariavel::setPhone2(std::string phone2){
-	this.phone2 = phone2;
+void RegVariavel::setPhone2(std::string p2){
+	phone2 = p2;
 }
 
 std::string RegVariavel::getPhone2(){
-	return this.phone2;
+	return phone2;
 }

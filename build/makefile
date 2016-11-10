@@ -1,8 +1,8 @@
 SRC_PATH=../src
 LIB_PATH=../lib
 OUT_PATH=../
-SOURCES=main.cpp
-LIST_LIBRARIES=$(addprefix $(LIB_PATH)/,$(INCLUDES))
+SOURCES=main.cpp CrtArvoreB.cpp ArvoreB.cpp No.cpp RegVariavel.cpp RegFixo.cpp utils.cpp
+
 LIST_SOURCES=$(addprefix $(SRC_PATH)/,$(SOURCES))
 
 CC=g++
