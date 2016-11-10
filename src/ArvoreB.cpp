@@ -16,7 +16,7 @@ ArvoreB::~ArvoreB(){
 
 
 /**************************METODOS PUBLICOS**************************/
-bool ArvoreB::insert(int key, int pos){
+bool ArvoreB::insert(std::string key, int pos){
 
 	return true;
 }

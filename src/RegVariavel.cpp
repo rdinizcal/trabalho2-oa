@@ -3,13 +3,13 @@
 /**************************CONSTRUTOR**************************/
 RegVariavel::RegVariavel(){
 
-	std::cout<<"Objeto de RegVariavel criado."<<std::endl;
+	//std::cout<<"Objeto de RegVariavel criado."<<std::endl;
 }
 
 /**************************DESTRUTOR**************************/
 RegVariavel::~RegVariavel(){
 
-	std::cout<<"Objeto de RegVariavel destruido."<<std::endl;
+	//std::cout<<"Objeto de RegVariavel destruido."<<std::endl;
 }
 
 
@@ -17,11 +17,11 @@ RegVariavel::~RegVariavel(){
 
 
 /**************************SETTERS & GETTERS**************************/
-void RegVariavel::setChavePrimaria(int chave){
+void RegVariavel::setChavePrimaria(std::string chave){
 	chavePrimaria = chave;
 }
 
-int RegVariavel::getChavePrimaria(){
+std::string RegVariavel::getChavePrimaria(){
 	return chavePrimaria;
 }
 
@@ -71,6 +71,14 @@ void RegVariavel::setCidade(std::string c){
 
 std::string RegVariavel::getCidade(){
 	return cidade;
+}
+
+void RegVariavel::setCondado(std::string c){
+	condado = c;
+}
+
+std::string RegVariavel::getCondado(){
+	return condado;
 }
 
 void RegVariavel::setEstado(std::string e){

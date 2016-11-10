@@ -14,7 +14,6 @@ private:
 	std::vector<int> prr;
 	std::vector<int> filho;
 
-
 public:
 	No(): pagina(id++){};
 	~No();

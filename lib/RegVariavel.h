@@ -5,27 +5,27 @@
 #include <iostream>
 
 class RegVariavel{
+
 private:
-	int chavePrimaria;
+	std::string chavePrimaria;
 	int prr;
 	std::string nome;
 	std::string sobrenome;
 	std::string empresa;
 	std::string endereco;
 	std::string cidade;
+	std::string condado;
 	std::string estado;
 	std::string cep;
 	std::string phone1;
 	std::string phone2;
 
-
-	
 public:
 	RegVariavel();
 	~RegVariavel();
 
-	void setChavePrimaria(int chavePrimaria);
-	int getChavePrimaria();
+	void setChavePrimaria(std::string chavePrimaria);
+	std::string getChavePrimaria();
 
 	void setPrr(int prr);
 	int getPrr();
@@ -45,6 +45,9 @@ public:
 	void setCidade(std::string cidade);
 	std::string getCidade();
 
+	void setCondado(std::string condado);
+	std::string getCondado();
+
 	void setEstado(std::string estado);
 	std::string getEstado();
 
@@ -56,8 +59,6 @@ public:
 
 	void setPhone2(std::string phone2);
 	std::string getPhone2();
-
-	
 };
 
 #endif

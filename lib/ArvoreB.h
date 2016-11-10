@@ -16,7 +16,7 @@ public:
 	ArvoreB();
 	~ArvoreB();
 
-	bool insert(int, int);
+	bool insert(std::string, int);
 
 	void setHeight(int height);
 	int getHeight();

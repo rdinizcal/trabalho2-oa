@@ -6,7 +6,7 @@
 
 class RegFixo{
 private:
-	int chavePrimaria;
+	std::string chavePrimaria;
 	int nrr;
 	std::string campo1;
 	std::string campo2;
@@ -16,8 +16,8 @@ public:
 	RegFixo();
 	~RegFixo();
 
-	void setChavePrimaria(int chavePrimaria);
-	int getChavePrimaria();
+	void setChavePrimaria(std::string chavePrimaria);
+	std::string getChavePrimaria();
 
 	void setNrr(int nrr);
 	int getNrr();

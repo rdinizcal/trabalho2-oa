@@ -3,13 +3,13 @@
 /**************************CONSTRUTOR**************************/
 RegFixo::RegFixo(){
 
-	std::cout<<"Objeto de RegFixo criado."<<std::endl;
+	//std::cout<<"Objeto de RegFixo criado."<<std::endl;
 }
 
 /**************************DESTRUTOR**************************/
 RegFixo::~RegFixo(){
 
-	std::cout<<"Objeto de RegFixo destruido."<<std::endl;
+	//std::cout<<"Objeto de RegFixo destruido."<<std::endl;
 }
 
 
@@ -17,11 +17,11 @@ RegFixo::~RegFixo(){
 
 
 /**************************SETTERS & GETTERS**************************/
-void RegFixo::setChavePrimaria(int c){
+void RegFixo::setChavePrimaria(std::string c){
 	chavePrimaria = c;
 }
 
-int RegFixo::getChavePrimaria(){
+std::string RegFixo::getChavePrimaria(){
 	return chavePrimaria;
 }
 
