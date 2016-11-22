@@ -5,36 +5,38 @@
 #include <iostream>
 
 class No{
+
 private:
-	static int id;
 	int nivel;
 	int pagina;
 	int contador;
-	std::vector<int> chave;
-	std::vector<int> prr;
-	std::vector<int> filho;
+	std::string chave[5];
+	int prr[5];
+	No* filho[6];
+	No* pai;
 
 public:
-	No(): pagina(id++){};
+	No();
 	~No();
 
-	void setNivel(int nivel);
+	int insert(std::string, int);
+	void erase(std::string);
+
+	void setNivel(int);
 	int getNivel();
 
-	void setPagina(int pagina);
-	int getPagina();
-
-	void setContador(int contador);
+	void setContador(int);
 	int getContador();
 
-	void setChave(std::vector<int> chave);
-	std::vector<int> getChave();
+	std::string getChave(int);
 
-	void setPrr(std::vector<int> prr);
-	std::vector<int> getPrr();
+	int getPrr(int);
 
-	void setFilho(std::vector<int> filho);
-	std::vector<int> getFilho();
+	void setFilho(No*, int);
+	No* getFilho(int);
+
+	void setPai(No*);
+	No* getPai();
 };
 
 #endif

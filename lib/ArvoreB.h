@@ -3,26 +3,31 @@
 
 #include "../lib/No.h"
 
-#include <map>
+#include <vector>
 #include <string>
 #include <iostream>
 
-class ArvoreB{
+class ArvoreB {
 private:
 	int height;
-	std::map<int, No> mapNo;
+	std::vector<No> noVector;
 	
 public:
 	ArvoreB();
 	~ArvoreB();
 
-	bool insert(std::string, int);
+	bool insert(No*, std::string, int);
 
-	void setHeight(int height);
+	void setHeight(int);
 	int getHeight();
 
-	void setMapNo(std::map<int,No> mapNo);
-	std::map<int,No> getMapNo();
+	void setNoVector(std::vector<No>);
+	std::vector<No> getNoVector();
+
+private:
+	No* buscaPosInsercao(No*, std::string);
+	bool inserirNo(No* ,std::string ,int ,No* ,No* );
+
 };
 
 #endif

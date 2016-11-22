@@ -18,6 +18,8 @@ bool CrtArvoreB::setUp(std::string fileType, std::string fileName){
 
 	int success = false;
 
+	No node;
+
 	std::string filePath;
 
 	std::fstream file;
@@ -41,17 +43,20 @@ bool CrtArvoreB::setUp(std::string fileType, std::string fileName){
 		regFixoVector = parseFixedReg(file);
 
 		for(int i = 0; i < (int)regFixoVector.size(); i++) {
-    		success = arvoreB.insert(regFixoVector[i].getChavePrimaria(), regFixoVector[i].getNrr());
+			std::cout<<"Inserindo- Chave: "<<regFixoVector[i].getChavePrimaria()<<" Pos: "<<regFixoVector[i].getNrr()<<std::endl;
+			
+    		success = arvoreB.insert(&node, regFixoVector[i].getChavePrimaria(), regFixoVector[i].getNrr());
     		if(!success) return false;
 		}
 
 	}
 	else if(!fileType.compare("rvar")){
-		std::cout<<"Ready to parse variable..."<<std::endl;
 		regVariavelVector = parseVariableReg(file);
 
 		for(int i = 0; i < (int)regVariavelVector.size(); i++) {
-    		success = arvoreB.insert(regVariavelVector[i].getChavePrimaria(), regVariavelVector[i].getPrr());
+			std::cout<<"Inserindo- Chave: "<<regVariavelVector[i].getChavePrimaria()<<" Pos: "<<regVariavelVector[i].getPrr()<<std::endl;
+
+    		success = arvoreB.insert(&node, regVariavelVector[i].getChavePrimaria(), regVariavelVector[i].getPrr());
     		if(!success) return false;
 		}
 	}
