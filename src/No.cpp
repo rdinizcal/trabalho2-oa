@@ -1,11 +1,14 @@
 #include "../lib/No.h"
 
+int No::objectCounter = 0;
+
 /**************************CONSTRUTOR**************************/
 No::No(){
 
 	nivel = 0;
-	pagina=0;
+	pagina = objectCounter++;
 	contador = 0;
+
 
 	for(int i = 0; i < 5; i++){
 		chave[i] = "";
@@ -15,13 +18,13 @@ No::No(){
 	filho[5] = NULL;
 	pai = NULL;
 
-	std::cout<<"Objeto de No "<<this<<" criado."<<std::endl;
+	//std::cout<<"Objeto de No "<<pagina<<" criado."<<std::endl;
 }
 
 /**************************DESTRUTOR**************************/
 No::~No(){
 
-	std::cout<<"Objeto de No destruido."<<std::endl;
+	//std::cout<<"Objeto de No "<<pagina<<" destruido."<<std::endl;
 }
 
 
@@ -33,6 +36,7 @@ int No::insert(std::string chaveAInserir, int posNoDisco){
 	std::string tempS;
 	int tempI;
 
+	std::cout<<"Inserindo chave "<<chaveAInserir<<" no No "<<pagina<<" ..."<<std::endl;
 	//Insere a chave em um espaco vazio
 	chave[contador] = chaveAInserir;
 	prr[contador] = posNoDisco;
@@ -75,13 +79,12 @@ void No::erase(std::string chaveAApagar){
 					prr[j] = prr[j+1];
 					filho[j] = filho[j+1];
 				}else{
-					chave[j] = "";
 					prr[j] = 0;
 					filho[j] = NULL;
 				}
+
 			}
 			break;
-
 		}
 	}
 
@@ -97,6 +100,10 @@ void No::setNivel(int n){
 
 int No::getNivel(){
 	return nivel;
+}
+
+int No::getPagina(){
+	return pagina;
 }
 
 void No::setContador(int c){

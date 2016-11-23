@@ -9,7 +9,7 @@ CrtArvoreB::CrtArvoreB(){
 /**************************DESTRUTOR**************************/
 CrtArvoreB::~CrtArvoreB(){
 
-	std::cout<<"Objeto de CrtArvoreB destruido."<<std::endl;
+	//std::cout<<"Objeto de CrtArvoreB destruido."<<std::endl;
 }
 
 
@@ -17,8 +17,6 @@ CrtArvoreB::~CrtArvoreB(){
 bool CrtArvoreB::setUp(std::string fileType, std::string fileName){
 
 	int success = false;
-
-	No node;
 
 	std::string filePath;
 
@@ -43,9 +41,11 @@ bool CrtArvoreB::setUp(std::string fileType, std::string fileName){
 		regFixoVector = parseFixedReg(file);
 
 		for(int i = 0; i < (int)regFixoVector.size(); i++) {
+			std::cout<<"-----"<<std::endl;
 			std::cout<<"Inserindo- Chave: "<<regFixoVector[i].getChavePrimaria()<<" Pos: "<<regFixoVector[i].getNrr()<<std::endl;
 			
-    		success = arvoreB.insert(&node, regFixoVector[i].getChavePrimaria(), regFixoVector[i].getNrr());
+    		success = arvoreB.insert(regFixoVector[i].getChavePrimaria(), regFixoVector[i].getNrr());
+
     		if(!success) return false;
 		}
 
@@ -56,7 +56,8 @@ bool CrtArvoreB::setUp(std::string fileType, std::string fileName){
 		for(int i = 0; i < (int)regVariavelVector.size(); i++) {
 			std::cout<<"Inserindo- Chave: "<<regVariavelVector[i].getChavePrimaria()<<" Pos: "<<regVariavelVector[i].getPrr()<<std::endl;
 
-    		success = arvoreB.insert(&node, regVariavelVector[i].getChavePrimaria(), regVariavelVector[i].getPrr());
+    		success = arvoreB.insert(regVariavelVector[i].getChavePrimaria(), regVariavelVector[i].getPrr());
+
     		if(!success) return false;
 		}
 	}
@@ -79,6 +80,7 @@ void CrtArvoreB::buscar(){
 
 void CrtArvoreB::mostrar(){
 
+	arvoreB.print();
 }
 
 /**************************METODOS PRIVADOS**************************/

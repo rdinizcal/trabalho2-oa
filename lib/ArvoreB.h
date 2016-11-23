@@ -2,31 +2,33 @@
 #define ARVOREB_H
 
 #include "../lib/No.h"
+#include "../lib/utils.h"
 
-#include <vector>
+#include <map>
 #include <string>
 #include <iostream>
 
 class ArvoreB {
 private:
 	int height;
-	std::vector<No> noVector;
-	
+	std::map<int, No*> noMap;
+
+
 public:
 	ArvoreB();
 	~ArvoreB();
 
-	bool insert(No*, std::string, int);
+	bool insert(std::string, int);
+	void print();
 
 	void setHeight(int);
 	int getHeight();
 
-	void setNoVector(std::vector<No>);
-	std::vector<No> getNoVector();
+	
 
 private:
 	No* buscaPosInsercao(No*, std::string);
-	bool inserirNo(No* ,std::string ,int ,No* ,No* );
+	bool inserirNo(No*, std::string, int, No*, No* );
 
 };
 

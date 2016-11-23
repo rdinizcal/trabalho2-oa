@@ -5,49 +5,100 @@ ArvoreB::ArvoreB(){
 
 	height = 0;
 
-	std::cout<<"Objeto de ArvoreB criado."<<std::endl;
+	//std::cout<<"Objeto de ArvoreB criado."<<std::endl;
 }
 
 /**************************DESTRUTOR**************************/
 ArvoreB::~ArvoreB(){
 
-	std::cout<<"Objeto de ArvoreB destruido."<<std::endl;
+	//std::cout<<"Objeto de ArvoreB destruido."<<std::endl;
 }
 
 
 /**************************METODOS PUBLICOS**************************/
-bool ArvoreB::insert(No* novoNo, std::string chaveAInserir, int posNoDisco){
+bool ArvoreB::insert(std::string chaveAInserir, int posNoDisco){
 
-	No raiz;
+	std::cout<<"Altura da Arvore: "<<height<<std::endl;
+	std::cout<<"noMap> ";
+	for(int i = 0; i<(int)noMap.size();i++){
+		std::cout<<noMap[i]->getPagina()<<"|";
+	}
+	std::cout<<std::endl;
 
-	if(noVector.size()>0){
-		for(int i = 0; i < (int)noVector.size(); i++){
-			if(noVector[i].getNivel() == height){
-				raiz = noVector[i];
-				break;
+	if(noMap.size()>0){
+		for(int i = 0; i < (int)noMap.size(); i++){
+			if(noMap[i]->getNivel() == height){
+				return inserirNo(buscaPosInsercao(noMap[i], chaveAInserir), chaveAInserir, posNoDisco, NULL, NULL);
 			}
 		}
-	}else{
-		noVector.push_back(raiz);
 	}
-
-	novoNo = buscaPosInsercao(&raiz, chaveAInserir);
-	return inserirNo(novoNo, chaveAInserir, posNoDisco, NULL, NULL);
+	
+	No* raiz = new No;
+	noMap[raiz->getPagina()] = raiz;
+	
+	return inserirNo(buscaPosInsercao(noMap[0], chaveAInserir), chaveAInserir, posNoDisco, NULL, NULL);
 }
 
+void ArvoreB::print(){
+
+	Utils util;		
+	util.clear();
+
+	for(int i = height; i >= 0; i--){
+		std::cout<<"N"<<i<<":   ";
+		bool primeiroAImprimir = true;
+		for(int j = 0; j < (int)noMap.size(); j++){
+			
+			if(noMap[j]->getNivel() == i){
+				if(!primeiroAImprimir) std::cout<<"; ";
+				primeiroAImprimir = false;
+				std::cout<<"P"<<noMap[j]->getPagina()<<":   ";
+				for(int k = 0; k < noMap[j]->getContador(); k++){
+					std::cout<<noMap[j]->getChave(k);
+					if(k+1 < noMap[j]->getContador()) std::cout<<"|";
+				}
+
+				std::cout<<" ";
+
+				bool firstToPrint = true;
+				for(int k = 0; k < noMap[j]->getContador()+1; k++){
+					if(noMap[j]->getFilho(k) != NULL){
+						if(!firstToPrint) std::cout<<"|";
+						firstToPrint = false;
+						std::cout<<noMap[j]->getFilho(k)->getPagina();
+					}
+
+				}
+
+				if(firstToPrint) std::cout<<"-|-";
+			}
+		}
+		std::cout<<std::endl;
+	}
+
+}
 /**************************METODOS PRIVADOS***************************/
 No* ArvoreB::buscaPosInsercao(No* noAtual, std::string chaveAInserir){
 
-	for(int i = 0; i < noAtual->getContador(); i++){
-		if(noAtual->getChave(i) != ""){
+	//std::cout<<std::endl<<"Buscando posicao de insercao..."<<std::endl;
+	for(int i = 0; i < 5; i++){
+		//std::cout<<"Chave a Inserir: "<<chaveAInserir<<" Chave do No: "<<noAtual->getChave(i)<<std::endl;
+		if(!noAtual->getChave(i).empty()){
+			//std::cout<<"Chave do no nao e vazia.."<<std::endl;
 			if(chaveAInserir.compare(noAtual->getChave(i))<0){
+				//std::cout<<"Chave a inserir e menor que a do no.."<<std::endl;
 				if(noAtual->getFilho(i) == NULL){
 					return noAtual;
 				}else{
 					return buscaPosInsercao(noAtual->getFilho(i), chaveAInserir);
 				}
-			}else{
+			}
+		}else{
+			//std::cout<<"Chave do no e vazia.."<<std::endl;
+			if(noAtual->getFilho(i) == NULL){
 				return noAtual;
+			}else{
+				return buscaPosInsercao(noAtual->getFilho(i), chaveAInserir);
 			}
 		}
 	}
@@ -59,7 +110,7 @@ bool ArvoreB::inserirNo(No* noAtual, std::string chaveAInserir, int posNoDisco, 
 	
 	bool success = true;
 	int posInsercao = noAtual->insert(chaveAInserir, posNoDisco);
-	std::cout<<"Posicao para insercao dentro do no: "<<posInsercao<<std::endl;
+	std::cout<<"No: "<<noAtual->getPagina()<<" -> "<<"Chave "<<chaveAInserir<<" inserida na posicao "<<posInsercao<<std::endl;
 
 	if(noFilho != NULL && noIrmao != NULL){
 		noAtual->setFilho(noFilho, posInsercao);
@@ -68,23 +119,31 @@ bool ArvoreB::inserirNo(No* noAtual, std::string chaveAInserir, int posNoDisco, 
 
 	if(noAtual->getContador()>4){
 		if(noAtual->getPai()==NULL){
-			No pai;
-			pai.setNivel(noAtual->getNivel()+1);
-			height = pai.getNivel();
-			noAtual->setPai(&pai);
-			noVector.push_back(pai);
+			std::cout<<"Cria No pai->"<<std::endl;
+			No* pai = new No;
+			pai->setNivel(noAtual->getNivel()+1);
+			height = pai->getNivel();
+			noAtual->setPai(pai);
+			noMap[pai->getPagina()] = pai;
+
 		}
-		No irmao;
-		irmao.setPai(noAtual->getPai());
-		irmao.setNivel(noAtual->getNivel());
-		noVector.push_back(irmao);
+		std::cout<<"Cria No irmao"<<std::endl;
+		No* irmao = new No;
+		irmao->setPai(noAtual->getPai());
+		irmao->setNivel(noAtual->getNivel());
+		noMap[irmao->getPagina()] = irmao;
 
-		success = inserirNo(noAtual->getPai(), noAtual->getChave(2), noAtual->getPrr(2), noAtual, &irmao);
+		std::cout<<"Inserir chave[2] no pai"<<std::endl;
+		success = inserirNo(noAtual->getPai(), noAtual->getChave(2), noAtual->getPrr(2), noAtual, irmao);
 
-		inserirNo(&irmao, noAtual->getChave(3), noAtual->getPrr(3), NULL, NULL);
-		inserirNo(&irmao, noAtual->getChave(4), noAtual->getPrr(4), NULL, NULL);
+		std::cout<<"Inserir chave[3] no irmao"<<std::endl;
+		inserirNo(irmao, noAtual->getChave(3), noAtual->getPrr(3), NULL, NULL);
+		std::cout<<"Inserir chave[4] no irmao"<<std::endl;
+		inserirNo(irmao, noAtual->getChave(4), noAtual->getPrr(4), NULL, NULL);
 
-		for(int j = 4; j > 1; j++){
+		for(int j = 4; j > 1; j--){
+
+			std::cout<<"Apagando "<<noAtual->getChave(j)<<" do No "<<noAtual->getPagina()<<std::endl;
 			noAtual->erase(noAtual->getChave(j));
 		}
 
@@ -92,7 +151,6 @@ bool ArvoreB::inserirNo(No* noAtual, std::string chaveAInserir, int posNoDisco, 
 
 	return success;
 }
-
 /**************************SETTERS & GETTERS**************************/
 void ArvoreB::setHeight(int h){
 	height = h;
@@ -102,11 +160,11 @@ int ArvoreB::getHeight(){
 	return height;
 }
 
-void ArvoreB::setNoVector(std::vector<No> nVec){
+/*void ArvoreB::setNoVector(std::vector<No> nVec){
 	noVector = nVec;
 }
 
 std::vector<No> ArvoreB::getNoVector(){
 	return noVector;
-}
+}*/
 

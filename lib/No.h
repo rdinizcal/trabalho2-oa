@@ -16,6 +16,8 @@ private:
 	No* pai;
 
 public:
+	static int objectCounter;
+
 	No();
 	~No();
 
@@ -24,6 +26,8 @@ public:
 
 	void setNivel(int);
 	int getNivel();
+
+	int getPagina();
 
 	void setContador(int);
 	int getContador();

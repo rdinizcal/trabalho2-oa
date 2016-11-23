@@ -63,8 +63,7 @@ int main (int argc, char *argv[]){
 				//success=memoryController.readMemory(files,myMemory);
 				break;
 			case 3:
-				//success=memoryController.eraseMemory(files,myMemory);
-				//if(success) files--;
+				crtArvoreB.mostrar();
 				break;
 			case 4:
 				return 0;
