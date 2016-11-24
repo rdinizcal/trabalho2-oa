@@ -53,6 +53,9 @@ void ArvoreB::print(){
 				if(!primeiroAImprimir) std::cout<<"; ";
 				primeiroAImprimir = false;
 				std::cout<<"P"<<noMap[j]->getPagina()<<":   ";
+
+				if(noMap[j]->getPai() != NULL) std::cout<<"PAI("<<noMap[j]->getPai()->getPagina()<<")   ";
+
 				for(int k = 0; k < noMap[j]->getContador(); k++){
 					std::cout<<noMap[j]->getChave(k);
 					if(k+1 < noMap[j]->getContador()) std::cout<<"|";
@@ -61,7 +64,7 @@ void ArvoreB::print(){
 				std::cout<<" ";
 
 				bool firstToPrint = true;
-				for(int k = 0; k < noMap[j]->getContador()+1; k++){
+				for(int k = 0; k < 6; k++){
 					if(noMap[j]->getFilho(k) != NULL){
 						if(!firstToPrint) std::cout<<"|";
 						firstToPrint = false;

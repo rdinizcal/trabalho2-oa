@@ -60,7 +60,8 @@ int main (int argc, char *argv[]){
 				//if(success) files++;
 				break;
 			case 2:
-				//success=memoryController.readMemory(files,myMemory);
+				
+				//crtArvoreB.inserir();
 				break;
 			case 3:
 				crtArvoreB.mostrar();

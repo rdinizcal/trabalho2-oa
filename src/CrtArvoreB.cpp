@@ -70,16 +70,15 @@ bool CrtArvoreB::setUp(std::string fileType, std::string fileName){
 	return true;
 }
 
-void CrtArvoreB::inserir(){
-
-}
+/*void CrtArvoreB::inserir(){
+	arvoreB.insert();
+}*/
 
 void CrtArvoreB::buscar(){
 
 }
 
 void CrtArvoreB::mostrar(){
-
 	arvoreB.print();
 }
 
