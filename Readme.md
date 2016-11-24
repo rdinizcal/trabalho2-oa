@@ -23,5 +23,13 @@ Para rodá-lo basta executar:
 ```
 ./main nome_do_arquivo.txt -r 1|2
 ```
-1 para arquivo com registros de tamanho variável
-2 para arquivo com registros de tamanho fixo
+1 para arquivo com registros de tamanho variável; 
+2 para arquivo com registros de tamanho fixo.
+Exemplos:
+```
+./main data1.txt -r 1
+```
+```
+./main data2.txt -r 2
+```
+
