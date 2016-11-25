@@ -10,6 +10,7 @@ One Paragraph of project description goes here
 * Comportamento estranho ao mostrar chaves (em relacao aos filhos)
 	* O problema pode ser devido a insercao incorreta das chaves
 	* Ou devido a implementacao incorreta do metodo ArvoreB::print()
+	* ERRO: Quando um nó que tem filhos é quebrado para criar nó irmão e promover uma chave para um nó pai, as referências do novo nó irmão são perdidas! (25/11)
 * Testar validade da ArvoreB criada no SetUp (Arquivos Teste data1.txt data2.txt)
 
 ## Plug'n'play
