@@ -99,8 +99,10 @@ No* ArvoreB::buscaPosInsercao(No* noAtual, std::string chaveAInserir){
 		}else{
 			//std::cout<<"Chave do no e vazia.."<<std::endl;
 			if(noAtual->getFilho(i) == NULL){
+				//std::cout<<"Nao tem filho..."<<std::endl;
 				return noAtual;
 			}else{
+				//std::cout<<"Tem filho.."<<std::endl;
 				return buscaPosInsercao(noAtual->getFilho(i), chaveAInserir);
 			}
 		}
@@ -115,9 +117,12 @@ bool ArvoreB::inserirNo(No* noAtual, std::string chaveAInserir, int posNoDisco, 
 	int posInsercao = noAtual->insert(chaveAInserir, posNoDisco);
 	std::cout<<"No: "<<noAtual->getPagina()<<" -> "<<"Chave "<<chaveAInserir<<" inserida na posicao "<<posInsercao<<std::endl;
 
-	if(noFilho != NULL && noIrmao != NULL){
+	if(noAtual == NULL)
+		return false;
+
+	if(noFilho != NULL){
 		noAtual->setFilho(noFilho, posInsercao);
-		noAtual->setFilho(noIrmao, posInsercao+1);
+		if(noIrmao != NULL) noAtual->setFilho(noIrmao, posInsercao+1);
 	}
 
 	if(noAtual->getContador()>4){
@@ -140,9 +145,9 @@ bool ArvoreB::inserirNo(No* noAtual, std::string chaveAInserir, int posNoDisco, 
 		success = inserirNo(noAtual->getPai(), noAtual->getChave(2), noAtual->getPrr(2), noAtual, irmao);
 
 		std::cout<<"Inserir chave[3] no irmao"<<std::endl;
-		inserirNo(irmao, noAtual->getChave(3), noAtual->getPrr(3), NULL, NULL);
+		inserirNo(irmao, noAtual->getChave(3), noAtual->getPrr(3), noAtual->getFilho(3), NULL);
 		std::cout<<"Inserir chave[4] no irmao"<<std::endl;
-		inserirNo(irmao, noAtual->getChave(4), noAtual->getPrr(4), NULL, NULL);
+		inserirNo(irmao, noAtual->getChave(4), noAtual->getPrr(4), noAtual->getFilho(4), noAtual->getFilho(5));
 
 		for(int j = 4; j > 1; j--){
 

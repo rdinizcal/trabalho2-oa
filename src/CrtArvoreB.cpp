@@ -47,6 +47,9 @@ bool CrtArvoreB::setUp(std::string fileType, std::string fileName){
     		success = arvoreB.insert(regFixoVector[i].getChavePrimaria(), regFixoVector[i].getNrr());
 
     		if(!success) return false;
+
+    	//arvoreB.print();
+
 		}
 
 	}
@@ -59,6 +62,8 @@ bool CrtArvoreB::setUp(std::string fileType, std::string fileName){
     		success = arvoreB.insert(regVariavelVector[i].getChavePrimaria(), regVariavelVector[i].getPrr());
 
     		if(!success) return false;
+
+		//arvoreB.print();
 		}
 	}
 	else{
