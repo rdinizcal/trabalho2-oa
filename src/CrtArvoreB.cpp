@@ -80,6 +80,7 @@ bool CrtArvoreB::setUp(std::string fileType, std::string fileName){
 }*/
 
 void CrtArvoreB::buscar(){
+arvoreB.seek();
 
 }
 
@@ -91,7 +92,7 @@ void CrtArvoreB::mostrar(){
 std::vector<RegFixo> CrtArvoreB::parseFixedReg(std::fstream &file){
 	std::vector<RegFixo> regFixoVector;
 	std::string line;
-	int posCounter = 0;
+	int posCounter = 1;
 
 	//std::cout<<"Entra no parser"<<std::endl;
 
@@ -100,14 +101,18 @@ std::vector<RegFixo> CrtArvoreB::parseFixedReg(std::fstream &file){
 
 		std::getline(file, line);
 		if(line.empty()) break;
-
+		
 		newRegFixo.setChavePrimaria(line.substr(0,4));
 		newRegFixo.setCampo1(line.substr(5,68));
 		newRegFixo.setCampo2(line.substr(74,21));
 		newRegFixo.setCampo3(line.substr(96,25));
 		newRegFixo.setNrr(posCounter++);
+		
+		if (newRegFixo.getNrr()<=9)
+		std::cout<<"0"<<newRegFixo.getNrr()<<"|"<<newRegFixo.getChavePrimaria()<<"|"<<newRegFixo.getCampo1()<<"|"<<newRegFixo.getCampo2()<<"|"<<newRegFixo.getCampo3()<<std::endl;
 
-		//std::cout<<newRegFixo.getNrr()<<"/"<<newRegFixo.getChavePrimaria()<<"/"<<newRegFixo.getCampo1()<<"/"<<newRegFixo.getCampo2()<<"/"<<newRegFixo.getCampo3()<<std::endl;
+		else
+		std::cout<<newRegFixo.getNrr()<<"|"<<newRegFixo.getChavePrimaria()<<"|"<<newRegFixo.getCampo1()<<"|"<<newRegFixo.getCampo2()<<"|"<<newRegFixo.getCampo3()<<std::endl;
 
 		regFixoVector.push_back(newRegFixo);
 		line.clear();
