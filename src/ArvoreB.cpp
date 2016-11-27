@@ -45,16 +45,16 @@ void ArvoreB::print(){
 	util.clear();
 
 	for(int i = height; i >= 0; i--){
-		std::cout<<"N"<<i<<":   ";
+		std::cout<<"N"<<i<<":\n";
 		bool primeiroAImprimir = true;
 		for(int j = 0; j < (int)noMap.size(); j++){
 			
 			if(noMap[j]->getNivel() == i){
-				if(!primeiroAImprimir) std::cout<<"; ";
+				if(!primeiroAImprimir) std::cout<<"\n";
 				primeiroAImprimir = false;
-				std::cout<<"P"<<noMap[j]->getPagina()<<":   ";
+				std::cout<<"P"<<noMap[j]->getPagina()<<":\t";
 
-				if(noMap[j]->getPai() != NULL) std::cout<<"PAI("<<noMap[j]->getPai()->getPagina()<<")   ";
+				if(noMap[j]->getPai() != NULL) std::cout<<"PAI("<<noMap[j]->getPai()->getPagina()<<")\t";
 
 				for(int k = 0; k < noMap[j]->getContador(); k++){
 					std::cout<<noMap[j]->getChave(k);
@@ -77,8 +77,13 @@ void ArvoreB::print(){
 			}
 		}
 		std::cout<<std::endl;
+		std::cout<<"\n";
 	}
 
+}
+
+void ArvoreB::seek(){
+std::cout<<"\nBuscando...\n";
 }
 /**************************METODOS PRIVADOS***************************/
 No* ArvoreB::buscaPosInsercao(No* noAtual, std::string chaveAInserir){
@@ -175,4 +180,3 @@ int ArvoreB::getHeight(){
 std::vector<No> ArvoreB::getNoVector(){
 	return noVector;
 }*/
-
