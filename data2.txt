@@ -7,7 +7,7 @@ ID06 Tales of the Heroes: Twin Brave                                      Februa
 ID07 Nendoroid Generations                                                February 23, 2012     Namco Bandai Games       
 ID08 Kurohyou 2: Ryu ga Gotoku Asyura hen                                 March 22, 2012        syn Sophia               
 ID09 Shining Blade                                                        March 15, 2012        Sega                     
-ID11 Genso Suikoden: Tsumugareshi Hyakunen no Toki                        February 9, 2012      Konami                   
+ID10 Genso Suikoden: Tsumugareshi Hyakunen no Toki                        February 9, 2012      Konami                   
 ID11 Kidou Senshi Gundam: Mokuba no Kiseki                                January 26, 2012      Namco Bandai Games       
 ID12 Magical Girl Lyrical Nanoha A's Portable: The Gears of Destiny       December 22, 2011     Namco Bandai Games       
 ID13 Frontier Gate                                                        December 22, 2011     tri-Ace                  
