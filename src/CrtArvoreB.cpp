@@ -16,8 +16,6 @@ CrtArvoreB::~CrtArvoreB(){
 /**************************METODOS PUBLICOS**************************/
 bool CrtArvoreB::setUp(std::string fileType, std::string fileName){
 
-	int success = false;
-
 	std::string filePath;
 
 	std::fstream file;
@@ -44,12 +42,8 @@ bool CrtArvoreB::setUp(std::string fileType, std::string fileName){
 			std::cout<<"-----"<<std::endl;
 			std::cout<<"Inserindo- Chave: "<<regFixoVector[i].getChavePrimaria()<<" Pos: "<<regFixoVector[i].getNrr()<<std::endl;
 			
-    		success = arvoreB.insert(regFixoVector[i].getChavePrimaria(), regFixoVector[i].getNrr());
-
-    		if(!success) return false;
-
-    	//arvoreB.print();
-
+    		if(!arvoreB.insert(regFixoVector[i].getChavePrimaria(), regFixoVector[i].getNrr())) return false;
+ 
 		}
 
 	}
@@ -59,11 +53,7 @@ bool CrtArvoreB::setUp(std::string fileType, std::string fileName){
 		for(int i = 0; i < (int)regVariavelVector.size(); i++) {
 			std::cout<<"Inserindo- Chave: "<<regVariavelVector[i].getChavePrimaria()<<" Pos: "<<regVariavelVector[i].getPrr()<<std::endl;
 
-    		success = arvoreB.insert(regVariavelVector[i].getChavePrimaria(), regVariavelVector[i].getPrr());
-
-    		if(!success) return false;
-
-		//arvoreB.print();
+    		if(!arvoreB.insert(regVariavelVector[i].getChavePrimaria(), regVariavelVector[i].getPrr())) return false;
 		}
 	}
 	else{
@@ -80,12 +70,113 @@ bool CrtArvoreB::setUp(std::string fileType, std::string fileName){
 }*/
 
 void CrtArvoreB::buscar(){
-arvoreB.seek();
+	//arvoreB.seek();
 
 }
 
 void CrtArvoreB::mostrar(){
 	arvoreB.print();
+}
+
+bool CrtArvoreB::inserir(std::string fileType){
+
+	std::string chave;
+	int pos;
+
+	if(!fileType.compare("rfixo")){
+		
+		std::string campo1;
+		std::string campo2;
+		std::string campo3;
+
+		RegFixo regfix;
+
+		std::cout<<"Chave: ";
+		std::cin>>chave;
+
+		std::cout<<"Campo 1: ";
+		std::cin>>campo1;
+
+		std::cout<<"Campo 2: ";
+		std::cin>>campo2;
+
+		std::cout<<"Campo 3: ";
+		std::cin>>campo3;
+
+		pos = regfix.objectCounter;
+
+		regfix.setCampo1(campo1);
+		regfix.setCampo2(campo2);
+		regfix.setCampo3(campo3);
+		regfix.setNrr(pos);
+	}
+	else if(!fileType.compare("rvar")){
+		std::string nome;
+		std::string sobrenome;
+		std::string empresa;
+		std::string endereco;
+		std::string cidade;
+		std::string condado;
+		std::string estado;
+		std::string cep;
+		std::string phone1;
+		std::string phone2;
+
+		RegVariavel regvar;
+
+		std::cout<<"Chave: ";
+		std::cin>>chave;
+
+		std::cout<<"Nome: ";
+		std::cin>>nome;
+
+		std::cout<<"Sobrenome: ";
+		std::cin>>sobrenome;
+
+		std::cout<<"Empresa: ";
+		std::cin>>empresa;
+		
+		std::cout<<"Endereco: ";
+		std::cin>>endereco;
+
+		std::cout<<"Cidade: ";
+		std::cin>>cidade;
+
+		std::cout<<"Condado: ";
+		std::cin>>condado;
+
+		std::cout<<"Estado: ";
+		std::cin>>estado;
+
+		std::cout<<"CEP: ";
+		std::cin>>cep;
+
+		std::cout<<"Phone1: ";
+		std::cin>>phone1;
+
+		std::cout<<"Phone2: ";
+		std::cin>>phone2;
+
+		pos = regvar.objectCounter;
+
+		regvar.setChavePrimaria(chave);
+		regvar.setNome(nome);
+		regvar.setSobrenome(sobrenome);
+		regvar.setEmpresa(empresa);
+		regvar.setEndereco(endereco);
+		regvar.setCidade(cidade);
+		regvar.setCondado(condado);
+		regvar.setEstado(estado);
+		regvar.setCEP(cep);
+		regvar.setPhone1(phone1);
+		regvar.setPhone2(phone2);
+		regvar.setPrr(pos);
+	}
+	else{
+		return false;
+	} 
+
+	return arvoreB.insert(chave, pos);
 }
 
 /**************************METODOS PRIVADOS**************************/

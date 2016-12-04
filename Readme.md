@@ -5,12 +5,9 @@ One Paragraph of project description goes here
 
 ## To-Do
 
-* Itens 1 e 2 do menu principal
+* Itens 1 e 2 do menu principal (2 parcialmente implementado)
 * Nao aceitar chaves duplicadas
-* Comportamento estranho ao mostrar chaves (em relacao aos filhos)
-	* O problema pode ser devido a insercao incorreta das chaves
-	* Ou devido a implementacao incorreta do metodo ArvoreB::print()
-	* ERRO: Quando um nó que tem filhos é quebrado para criar nó irmão e promover uma chave para um nó pai, as referências do novo nó irmão são perdidas! (25/11)
+* Chaves sendo inseridas corretamente porem o no nao esta organizado em ordem crescente apos insercao
 * Testar validade da ArvoreB criada no SetUp (Arquivos Teste data1.txt data2.txt)
 
 ## Plug'n'play

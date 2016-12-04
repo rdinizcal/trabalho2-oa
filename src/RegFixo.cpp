@@ -1,5 +1,7 @@
 #include "../lib/RegFixo.h"
 
+int RegFixo::objectCounter = 0;
+
 /**************************CONSTRUTOR**************************/
 RegFixo::RegFixo(){
 
@@ -56,4 +58,3 @@ void RegFixo::setCampo3(std::string c3){
 std::string RegFixo::getCampo3(){
 	return campo3;
 }
-

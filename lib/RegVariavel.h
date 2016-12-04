@@ -21,6 +21,8 @@ private:
 	std::string phone2;
 
 public:
+	static int objectCounter;
+
 	RegVariavel();
 	~RegVariavel();
 

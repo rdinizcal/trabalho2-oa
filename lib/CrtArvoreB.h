@@ -20,7 +20,7 @@ public:
 	~CrtArvoreB();
 
 	bool setUp(std::string, std::string);
-	void inserir();
+	bool inserir(std::string fileType);
 	void buscar();
 	void mostrar();
 

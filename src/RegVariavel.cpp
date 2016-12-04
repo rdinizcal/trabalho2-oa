@@ -1,5 +1,7 @@
 #include "../lib/RegVariavel.h"
 
+int RegVariavel::objectCounter = 0;
+
 /**************************CONSTRUTOR**************************/
 RegVariavel::RegVariavel(){
 

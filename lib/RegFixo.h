@@ -13,6 +13,8 @@ private:
 	std::string campo3;
 	
 public:
+	static int objectCounter;
+
 	RegFixo();
 	~RegFixo();
 
@@ -30,6 +32,7 @@ public:
 
 	void setCampo3(std::string campo3);
 	std::string getCampo3();
+
 };
 
 #endif

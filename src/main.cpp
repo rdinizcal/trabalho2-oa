@@ -15,7 +15,6 @@ int main (int argc, char *argv[]){
 	std::string fileType;
 
 	int choice = 0;
-	//bool success = false;
 
 	if(argc != 4 || strcmp(argv[2],"-r") != 0 ){
 		std::cout<<"Uso incorreto do programa. (main data.txt -r (1|2))"<<std::endl;
@@ -60,8 +59,7 @@ int main (int argc, char *argv[]){
 				//if(success) files++;
 				break;
 			case 2:
-				
-				//crtArvoreB.inserir();
+				if(!crtArvoreB.inserir(fileType)) std::cout<<"Erro ao inserir registro."<<std::endl;
 				break;
 			case 3:
 				crtArvoreB.mostrar();

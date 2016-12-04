@@ -20,7 +20,8 @@ public:
 
 	bool insert(std::string, int);
 	void print();
-
+	void seek();
+	
 	void setHeight(int);
 	int getHeight();
 

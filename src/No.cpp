@@ -41,7 +41,7 @@ int No::insert(std::string chaveAInserir, int posNoDisco){
 	chave[contador] = chaveAInserir;
 	prr[contador] = posNoDisco;
 
-	//E organiza em ordem cresncente as strings
+	//E organiza as strings em ordem cresncente 
 	for(int i = 0; i < contador; i++){
 		troca = false;
 		for(int j = 0; j < contador; j++){
