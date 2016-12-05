@@ -20,8 +20,8 @@ public:
 	~CrtArvoreB();
 
 	bool setUp(std::string, std::string);
-	bool inserir(std::string fileType);
-	void buscar();
+	bool inserir(std::string);
+	void buscar(std::string, std::string);
 	void mostrar();
 
 private:

@@ -55,8 +55,7 @@ int main (int argc, char *argv[]){
 
 		switch(choice){
 			case 1:
-				//success=memoryController.writeMemory(files,myMemory);
-				//if(success) files++;
+				crtArvoreB.buscar(fileType, fileName);
 				break;
 			case 2:
 				if(!crtArvoreB.inserir(fileType)) std::cout<<"Erro ao inserir registro."<<std::endl;

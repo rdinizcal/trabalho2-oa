@@ -5,10 +5,7 @@ One Paragraph of project description goes here
 
 ## To-Do
 
-* Itens 1 e 2 do menu principal (2 parcialmente implementado)
-* Nao aceitar chaves duplicadas
-* Chaves sendo inseridas corretamente porem o no nao esta organizado em ordem crescente apos insercao
-* Testar validade da ArvoreB criada no SetUp (Arquivos Teste data1.txt data2.txt)
+* Insercao de chaves somente funciona para chaves em ordem
 
 ## Plug'n'play
 

@@ -65,13 +65,74 @@ bool CrtArvoreB::setUp(std::string fileType, std::string fileName){
 	return true;
 }
 
-/*void CrtArvoreB::inserir(){
-	arvoreB.insert();
-}*/
+void CrtArvoreB::buscar(std::string fileType, std::string fileName){
+	int pos;
 
-void CrtArvoreB::buscar(){
-	//arvoreB.seek();
+	std::string chave;
+	std::string filePath;
 
+	std::fstream file;
+
+	std::vector<RegFixo> regFixoVector;
+	std::vector<RegVariavel> regVariavelVector;
+
+	filePath = "../";
+	filePath.append(fileName);
+
+	file.open(filePath, std::fstream::in);
+
+	if(!file.is_open()){
+		std::cout<<fileName<<" nao pode ser aberto."<<std::endl;
+		return;
+	}
+
+	std::cout<<"Entre com a chave primaria a ser buscada: ";
+	std::cin>>chave;
+
+
+	pos = arvoreB.seek(chave);
+
+	if(pos==-1){
+		std::cout<<"Chave nao encontrada."<<std::endl;
+	}else{
+
+		if(!fileType.compare("rfixo")){
+			regFixoVector = parseFixedReg(file);
+
+
+			for(int i = 0; i < (int)regFixoVector.size(); i++) {
+				
+				if(regFixoVector[i].getNrr() == pos){
+					std::cout<<regFixoVector[i].getChavePrimaria()<<" "<<regFixoVector[i].getCampo1()<<" "<<regFixoVector[i].getCampo2()<<" "<<regFixoVector[i].getCampo3()<<std::endl;
+					break;
+				}
+				if((i+1) == (int)regFixoVector.size()) std::cout<<"ERROR: O registro foi encontrado na arvore porem nao foi encontrado no arquivo"<<std::endl;
+
+			}
+
+		}
+		else if(!fileType.compare("rvar")){
+			regVariavelVector = parseVariableReg(file);
+
+			for(int i = 0; i < (int)regVariavelVector.size(); i++) {
+				
+				if(regVariavelVector[i].getPrr() == pos){
+					std::cout<<regVariavelVector[i].getChavePrimaria()<<" "<<regVariavelVector[i].getNome()<<" "<<regVariavelVector[i].getSobrenome()<<" "<<regVariavelVector[i].getEmpresa();
+					std::cout<<" "<<regVariavelVector[i].getEndereco()<<" "<<regVariavelVector[i].getCidade()<<" "<<regVariavelVector[i].getCondado()<<" "<<regVariavelVector[i].getEstado();
+					std::cout<<" "<<regVariavelVector[i].getCEP()<<" "<<regVariavelVector[i].getPhone1()<<" "<<regVariavelVector[i].getPhone2()<<std::endl;
+					break;
+				}
+				if((i+1) == (int)regVariavelVector.size()) std::cout<<"ERROR: O registro foi encontrado na arvore porem nao foi encontrado no arquivo"<<std::endl;
+			}
+		}
+
+
+	}
+
+
+	file.close();
+
+	return;
 }
 
 void CrtArvoreB::mostrar(){
@@ -199,11 +260,11 @@ std::vector<RegFixo> CrtArvoreB::parseFixedReg(std::fstream &file){
 		newRegFixo.setCampo3(line.substr(96,25));
 		newRegFixo.setNrr(posCounter++);
 		
-		if (newRegFixo.getNrr()<=9)
-		std::cout<<"0"<<newRegFixo.getNrr()<<"|"<<newRegFixo.getChavePrimaria()<<"|"<<newRegFixo.getCampo1()<<"|"<<newRegFixo.getCampo2()<<"|"<<newRegFixo.getCampo3()<<std::endl;
+		//if (newRegFixo.getNrr()<=9)
+		//std::cout<<"0"<<newRegFixo.getNrr()<<"|"<<newRegFixo.getChavePrimaria()<<"|"<<newRegFixo.getCampo1()<<"|"<<newRegFixo.getCampo2()<<"|"<<newRegFixo.getCampo3()<<std::endl;
 
-		else
-		std::cout<<newRegFixo.getNrr()<<"|"<<newRegFixo.getChavePrimaria()<<"|"<<newRegFixo.getCampo1()<<"|"<<newRegFixo.getCampo2()<<"|"<<newRegFixo.getCampo3()<<std::endl;
+		//else
+		//std::cout<<newRegFixo.getNrr()<<"|"<<newRegFixo.getChavePrimaria()<<"|"<<newRegFixo.getCampo1()<<"|"<<newRegFixo.getCampo2()<<"|"<<newRegFixo.getCampo3()<<std::endl;
 
 		regFixoVector.push_back(newRegFixo);
 		line.clear();
@@ -276,8 +337,8 @@ std::vector<RegVariavel>  CrtArvoreB::parseVariableReg(std::fstream &file){
 		newRegVariavel.setPrr(posCounter);
 		posCounter+=line.size();
 
-		std::cout<<newRegVariavel.getPrr()<<"/"<<newRegVariavel.getChavePrimaria()<<"/"<<newRegVariavel.getNome()<<"/"<<newRegVariavel.getSobrenome()<<"/"<<newRegVariavel.getEmpresa();
-		std::cout<<"/"<<newRegVariavel.getEndereco()<<"/"<<newRegVariavel.getCidade()<<"/"<<newRegVariavel.getCondado()<<"/"<<newRegVariavel.getEstado()<<"/"<<newRegVariavel.getCEP()<<"/"<<newRegVariavel.getPhone1()<<"/"<<newRegVariavel.getPhone2()<<std::endl<<std::endl;
+		//std::cout<<newRegVariavel.getPrr()<<"/"<<newRegVariavel.getChavePrimaria()<<"/"<<newRegVariavel.getNome()<<"/"<<newRegVariavel.getSobrenome()<<"/"<<newRegVariavel.getEmpresa();
+		//std::cout<<"/"<<newRegVariavel.getEndereco()<<"/"<<newRegVariavel.getCidade()<<"/"<<newRegVariavel.getCondado()<<"/"<<newRegVariavel.getEstado()<<"/"<<newRegVariavel.getCEP()<<"/"<<newRegVariavel.getPhone1()<<"/"<<newRegVariavel.getPhone2()<<std::endl<<std::endl;
 
 
 		regVariavelVector.push_back(newRegVariavel);

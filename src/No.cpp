@@ -36,7 +36,6 @@ int No::insert(std::string chaveAInserir, int posNoDisco){
 	std::string tempS;
 	int tempI;
 
-	std::cout<<"Inserindo chave "<<chaveAInserir<<" no No "<<pagina<<" ..."<<std::endl;
 	//Insere a chave em um espaco vazio
 	chave[contador] = chaveAInserir;
 	prr[contador] = posNoDisco;
@@ -70,7 +69,7 @@ int No::insert(std::string chaveAInserir, int posNoDisco){
 }
 
 void No::erase(std::string chaveAApagar){
-	
+
 	for(int i = 0; i < contador; i++){
 		if(chave[i] == chaveAApagar) {
 			for(int j = i; j < contador; j++){
@@ -80,7 +79,7 @@ void No::erase(std::string chaveAApagar){
 					filho[j] = filho[j+1];
 				}else{
 					prr[j] = 0;
-					filho[j] = NULL;
+					filho[j+1] = NULL;
 				}
 
 			}
