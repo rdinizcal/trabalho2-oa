@@ -21,7 +21,7 @@ public:
 	No();
 	~No();
 
-	int insert(std::string, int);
+	int insert(std::string, int, No*);
 	void erase(std::string);
 
 	void setNivel(int);

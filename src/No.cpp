@@ -29,16 +29,27 @@ No::~No(){
 
 
 /**************************METODOS PUBLICOS**************************/
-int No::insert(std::string chaveAInserir, int posNoDisco){
+int No::insert(std::string chaveAInserir, int posNoDisco, No* noFilho){
 
 	bool troca = false;
 	
 	std::string tempS;
 	int tempI;
+	No* tempF;
+
+
+	//Shift de todo mundo pra direita e add o novo no comeco
+	filho[contador+1] = filho[contador];
+	for(int i = contador; i > 0; i--){
+		chave[i] = chave[i-1];
+		prr[i] = prr[i-1];
+		filho[i] = filho[i-1];
+	}
 
 	//Insere a chave em um espaco vazio
-	chave[contador] = chaveAInserir;
-	prr[contador] = posNoDisco;
+	chave[0] = chaveAInserir;
+	prr[0] = posNoDisco;
+	filho[0] = noFilho;
 
 	//E organiza as strings em ordem cresncente 
 	for(int i = 0; i < contador; i++){
@@ -54,6 +65,10 @@ int No::insert(std::string chaveAInserir, int posNoDisco){
 				tempI = prr[j+1];
 				prr[j+1] = prr[j];
 				prr[j] = tempI;
+
+				tempF = filho[j+1];
+				filho[j+1] = filho[j];
+				filho[j] = tempF; 				
 			}
 		}
 		if(!troca) break;

@@ -6,7 +6,6 @@
 * Buscar: done.
 * Inserir: 
 	* Falta inserir registro nos txts
-	* Insercao de chaves somente funciona para chaves em ordem
 * Mostrar: done.
 
 ## Plug'n'play

@@ -172,14 +172,15 @@ No* ArvoreB::buscaPosInsercao(No* noAtual, std::string chaveAInserir){
 
 bool ArvoreB::inserirNo(No* noAtual, std::string chaveAInserir, int posNoDisco, No* noFilho, No* noIrmao){
 	
-	int posInsercao = noAtual->insert(chaveAInserir, posNoDisco);
+	int posInsercao = noAtual->insert(chaveAInserir, posNoDisco, noFilho);
 	std::cout<<"No: "<<noAtual->getPagina()<<" -> "<<"Chave "<<chaveAInserir<<" inserida na posicao "<<posInsercao<<std::endl;
+	print();
 
 	if(noAtual == NULL)
 		return false;
 
 	if(noFilho != NULL){
-		noAtual->setFilho(noFilho, posInsercao);
+		//noAtual->setFilho(noFilho, posInsercao);
 		std::cout<<"No "<<noFilho->getPagina()<<" agora e filho de no "<< noAtual->getPagina()<<" na posicao "<<posInsercao<<std::endl;
 		noFilho->setPai(noAtual);
 
@@ -221,7 +222,6 @@ bool ArvoreB::inserirNo(No* noAtual, std::string chaveAInserir, int posNoDisco, 
 
 			std::cout<<"Apagando "<<noAtual->getChave(j)<<" do No "<<noAtual->getPagina()<<std::endl;
 			noAtual->erase(noAtual->getChave(j));
-			//print();
 		}
 
 	}
