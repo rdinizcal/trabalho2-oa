@@ -45,16 +45,16 @@ int No::insert(std::string chaveAInserir, int posNoDisco){
 	for(int i = 0; i < contador; i++){
 		troca = false;
 		for(int j = 0; j < contador; j++){
-			if(chave[i].compare(chave[i+1])>0){
+			if(chave[j].compare(chave[j+1])>0){
 				troca = true;
 
-				tempS = chave[i+1];
-				chave[i+1] = chave[i];
-				chave[i] = tempS;
+				tempS = chave[j+1];
+				chave[j+1] = chave[j];
+				chave[j] = tempS;
 
-				tempI = prr[i+1];
-				prr[i+1] = prr[i];
-				prr[i] = tempI;
+				tempI = prr[j+1];
+				prr[j+1] = prr[j];
+				prr[j] = tempI;
 			}
 		}
 		if(!troca) break;
