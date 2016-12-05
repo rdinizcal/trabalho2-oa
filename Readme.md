@@ -1,11 +1,13 @@
 
 # Trabalho 2 - Organização de Arquivos UnB 2/2016
 
-One Paragraph of project description goes here
-
 ## To-Do
 
-* Insercao de chaves somente funciona para chaves em ordem
+* Buscar: done.
+* Inserir: 
+	* Falta inserir registro nos txts
+	* Insercao de chaves somente funciona para chaves em ordem
+* Mostrar: done.
 
 ## Plug'n'play
 
