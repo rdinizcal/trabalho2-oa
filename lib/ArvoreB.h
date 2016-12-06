@@ -25,7 +25,7 @@ public:
 	void setHeight(int);
 	int getHeight();
 
-	
+	int getPos();
 
 private:
 	No* buscaPosInsercao(No*, std::string);

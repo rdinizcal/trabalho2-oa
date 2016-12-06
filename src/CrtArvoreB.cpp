@@ -3,7 +3,7 @@
 /**************************CONSTRUTOR**************************/
 CrtArvoreB::CrtArvoreB(){
 
-	std::cout<<"Objeto de CrtArvoreB criado."<<std::endl;
+	//std::cout<<"Objeto de CrtArvoreB criado."<<std::endl;
 }
 
 /**************************DESTRUTOR**************************/
@@ -33,14 +33,14 @@ bool CrtArvoreB::setUp(std::string fileType, std::string fileName){
 		return false;
 	}
 
-	std::cout<<"fileType: "<<fileType<<std::endl;
+	//std::cout<<"fileType: "<<fileType<<std::endl;
 
 	if(!fileType.compare("rfixo")){
 		regFixoVector = parseFixedReg(file);
 
 		for(int i = 0; i < (int)regFixoVector.size(); i++) {
-			std::cout<<"-----"<<std::endl;
-			std::cout<<"Inserindo- Chave: "<<regFixoVector[i].getChavePrimaria()<<" Pos: "<<regFixoVector[i].getNrr()<<std::endl;
+			//std::cout<<"-----"<<std::endl;
+			//std::cout<<"Inserindo- Chave: "<<regFixoVector[i].getChavePrimaria()<<" Pos: "<<regFixoVector[i].getNrr()<<std::endl;
 			
     		if(!arvoreB.insert(regFixoVector[i].getChavePrimaria(), regFixoVector[i].getNrr())) return false;
  
@@ -51,7 +51,7 @@ bool CrtArvoreB::setUp(std::string fileType, std::string fileName){
 		regVariavelVector = parseVariableReg(file);
 
 		for(int i = 0; i < (int)regVariavelVector.size(); i++) {
-			std::cout<<"Inserindo- Chave: "<<regVariavelVector[i].getChavePrimaria()<<" Pos: "<<regVariavelVector[i].getPrr()<<std::endl;
+			//std::cout<<"Inserindo- Chave: "<<regVariavelVector[i].getChavePrimaria()<<" Pos: "<<regVariavelVector[i].getPrr()<<std::endl;
 
     		if(!arvoreB.insert(regVariavelVector[i].getChavePrimaria(), regVariavelVector[i].getPrr())) return false;
 		}
@@ -88,7 +88,7 @@ void CrtArvoreB::buscar(std::string fileType, std::string fileName){
 
 	std::cout<<"Entre com a chave primaria a ser buscada: ";
 	std::cin>>chave;
-
+	std::cin.ignore (std::numeric_limits<std::streamsize>::max(), '\n');
 
 	pos = arvoreB.seek(chave);
 
@@ -99,7 +99,7 @@ void CrtArvoreB::buscar(std::string fileType, std::string fileName){
 		if(!fileType.compare("rfixo")){
 			regFixoVector = parseFixedReg(file);
 
-
+			//std::cout<<"NRR:"<<pos<<std::endl;
 			for(int i = 0; i < (int)regFixoVector.size(); i++) {
 				
 				if(regFixoVector[i].getNrr() == pos){
@@ -139,10 +139,19 @@ void CrtArvoreB::mostrar(){
 	arvoreB.print();
 }
 
-bool CrtArvoreB::inserir(std::string fileType){
+bool CrtArvoreB::inserir(std::string fileType, std::string fileName){
+
+	int pos;
 
 	std::string chave;
-	int pos;
+	std::string filePath;
+
+	std::fstream file;
+
+	filePath = "../";
+	filePath.append(fileName);
+
+	file.open(filePath, std::fstream::app);
 
 	if(!fileType.compare("rfixo")){
 		
@@ -153,23 +162,34 @@ bool CrtArvoreB::inserir(std::string fileType){
 		RegFixo regfix;
 
 		std::cout<<"Chave: ";
-		std::cin>>chave;
+		std::getline(std::cin, chave);
 
 		std::cout<<"Campo 1: ";
-		std::cin>>campo1;
+		std::getline(std::cin, campo1);
 
 		std::cout<<"Campo 2: ";
-		std::cin>>campo2;
+		std::getline(std::cin, campo2);
 
 		std::cout<<"Campo 3: ";
-		std::cin>>campo3;
+		std::getline(std::cin, campo3);
 
-		pos = regfix.objectCounter;
+		pos = arvoreB.getPos();
 
-		regfix.setCampo1(campo1);
-		regfix.setCampo2(campo2);
-		regfix.setCampo3(campo3);
-		regfix.setNrr(pos);
+		if(arvoreB.insert(chave, pos)){
+			file<<chave;
+			for(int i = 0; i < 4-(int)chave.size(); i++) file<<" ";
+
+			file<<" "<<campo1;
+			for(int i = 0; i < 68-(int)campo1.size(); i++) file<<" ";
+
+			file<<" "<<campo2;
+			for(int i = 0; i < 21-(int)campo2.size(); i++) file<<" ";	
+
+			file<<" "<<campo3;
+			for(int i = 0; i < 25-(int)campo3.size(); i++) file<<" ";
+
+			file<<std::endl;
+		}
 	}
 	else if(!fileType.compare("rvar")){
 		std::string nome;
@@ -186,58 +206,46 @@ bool CrtArvoreB::inserir(std::string fileType){
 		RegVariavel regvar;
 
 		std::cout<<"Chave: ";
-		std::cin>>chave;
+		std::getline(std::cin, chave);
 
 		std::cout<<"Nome: ";
-		std::cin>>nome;
+		std::getline(std::cin, nome);
 
 		std::cout<<"Sobrenome: ";
-		std::cin>>sobrenome;
+		std::getline(std::cin, sobrenome);
 
 		std::cout<<"Empresa: ";
-		std::cin>>empresa;
+		std::getline(std::cin, empresa);
 		
 		std::cout<<"Endereco: ";
-		std::cin>>endereco;
+		std::getline(std::cin, endereco);
 
 		std::cout<<"Cidade: ";
-		std::cin>>cidade;
+		std::getline(std::cin, cidade);
 
 		std::cout<<"Condado: ";
-		std::cin>>condado;
+		std::getline(std::cin, condado);
 
 		std::cout<<"Estado: ";
-		std::cin>>estado;
+		std::getline(std::cin, estado);
 
 		std::cout<<"CEP: ";
-		std::cin>>cep;
+		std::getline(std::cin, cep);
 
 		std::cout<<"Phone1: ";
-		std::cin>>phone1;
+		std::getline(std::cin, phone1);
 
 		std::cout<<"Phone2: ";
-		std::cin>>phone2;
+		std::getline(std::cin, phone2);
 
-		pos = regvar.objectCounter;
+		pos = arvoreB.getPos();
 
-		regvar.setChavePrimaria(chave);
-		regvar.setNome(nome);
-		regvar.setSobrenome(sobrenome);
-		regvar.setEmpresa(empresa);
-		regvar.setEndereco(endereco);
-		regvar.setCidade(cidade);
-		regvar.setCondado(condado);
-		regvar.setEstado(estado);
-		regvar.setCEP(cep);
-		regvar.setPhone1(phone1);
-		regvar.setPhone2(phone2);
-		regvar.setPrr(pos);
+		if(arvoreB.insert(chave, pos))
+			file<<chave<<";"<<nome<<";"<<sobrenome<<";"<<empresa<<";"<<endereco<<";"<<cidade<<";"<<condado<<";"<<estado<<";"<<cep<<";"<<phone1<<";"<<phone2<<std::endl;
 	}
-	else{
-		return false;
-	} 
 
-	return arvoreB.insert(chave, pos);
+	file.close();
+	return true;
 }
 
 /**************************METODOS PRIVADOS**************************/
@@ -252,7 +260,8 @@ std::vector<RegFixo> CrtArvoreB::parseFixedReg(std::fstream &file){
 		RegFixo newRegFixo;
 
 		std::getline(file, line);
-		if(line.empty()) break;
+		if(line.empty() || line.size()<=1) break;
+
 		
 		newRegFixo.setChavePrimaria(line.substr(0,4));
 		newRegFixo.setCampo1(line.substr(5,68));
@@ -260,11 +269,11 @@ std::vector<RegFixo> CrtArvoreB::parseFixedReg(std::fstream &file){
 		newRegFixo.setCampo3(line.substr(96,25));
 		newRegFixo.setNrr(posCounter++);
 		
-		//if (newRegFixo.getNrr()<=9)
-		//std::cout<<"0"<<newRegFixo.getNrr()<<"|"<<newRegFixo.getChavePrimaria()<<"|"<<newRegFixo.getCampo1()<<"|"<<newRegFixo.getCampo2()<<"|"<<newRegFixo.getCampo3()<<std::endl;
+		/*if (newRegFixo.getNrr()<=9)
+		std::cout<<"0"<<newRegFixo.getNrr()<<"|"<<newRegFixo.getChavePrimaria()<<"|"<<newRegFixo.getCampo1()<<"|"<<newRegFixo.getCampo2()<<"|"<<newRegFixo.getCampo3()<<std::endl;
 
-		//else
-		//std::cout<<newRegFixo.getNrr()<<"|"<<newRegFixo.getChavePrimaria()<<"|"<<newRegFixo.getCampo1()<<"|"<<newRegFixo.getCampo2()<<"|"<<newRegFixo.getCampo3()<<std::endl;
+		else
+		std::cout<<newRegFixo.getNrr()<<"|"<<newRegFixo.getChavePrimaria()<<"|"<<newRegFixo.getCampo1()<<"|"<<newRegFixo.getCampo2()<<"|"<<newRegFixo.getCampo3()<<std::endl;*/
 
 		regFixoVector.push_back(newRegFixo);
 		line.clear();
@@ -285,9 +294,9 @@ std::vector<RegVariavel>  CrtArvoreB::parseVariableReg(std::fstream &file){
 		RegVariavel newRegVariavel;
 
 		std::getline(file, line);
-		if(line.empty()) break;
+		if(line.empty() || line.size()<=1) break;
 
-		std::cout<<line<<std::endl;
+		//std::cout<<line<<std::endl;
 
 		pos=0;
 		

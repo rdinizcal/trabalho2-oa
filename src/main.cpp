@@ -50,6 +50,7 @@ int main (int argc, char *argv[]){
 
 		std::cout<<"Escolha um item: ";
 		std::cin>>choice;
+		std::cin.ignore (std::numeric_limits<std::streamsize>::max(), '\n');
 
 		if(choice>4 || choice<=0) return 0;
 
@@ -58,7 +59,7 @@ int main (int argc, char *argv[]){
 				crtArvoreB.buscar(fileType, fileName);
 				break;
 			case 2:
-				if(!crtArvoreB.inserir(fileType)) std::cout<<"Erro ao inserir registro."<<std::endl;
+				if(!crtArvoreB.inserir(fileType, fileName)) std::cout<<"Erro ao inserir registro."<<std::endl;
 				break;
 			case 3:
 				crtArvoreB.mostrar();

@@ -1,11 +1,14 @@
 
 # Trabalho 2 - Organização de Arquivos UnB 2/2016
 
+##Autores
+* Ricardo Diniz Caldas | 12/0045800
+* Alexander Matheus de Melo Lima | 12/0108534
+
 ## To-Do
 
 * Buscar: done.
-* Inserir: 
-	* Falta inserir registro nos txts
+* Inserir: done.
 * Mostrar: done.
 
 ## Plug'n'play

@@ -51,7 +51,7 @@ bool ArvoreB::insert(std::string chaveAInserir, int posNoDisco){
 void ArvoreB::print(){
 
 	Utils util;		
-	//util.clear();
+	util.clear();
 
 	for(int i = height; i >= 0; i--){
 		std::cout<<"N"<<i<<":\n";
@@ -63,7 +63,7 @@ void ArvoreB::print(){
 				primeiroAImprimir = false;
 				std::cout<<"P"<<noMap[j]->getPagina()<<":\t";
 
-				if(noMap[j]->getPai() != NULL) std::cout<<"PAI("<<noMap[j]->getPai()->getPagina()<<")\t";
+				//if(noMap[j]->getPai() != NULL) std::cout<<"PAI("<<noMap[j]->getPai()->getPagina()<<")\t";
 
 				for(int k = 0; k < noMap[j]->getContador(); k++){
 					std::cout<<noMap[j]->getChave(k);
@@ -99,7 +99,7 @@ int ArvoreB::seek(std::string chave){
 		return -1;
 	}
 
-	std::cout<<"Chave a ser encontrada: "<<chave<<std::endl;
+	//std::cout<<"Chave a ser encontrada: "<<chave<<std::endl;
 	for(int i = 0; i < (int)noMap.size(); i++){
 		if(noMap[i]->getNivel() == height){
 			//Realiza busca binaria ate encontrar a chave
@@ -173,20 +173,19 @@ No* ArvoreB::buscaPosInsercao(No* noAtual, std::string chaveAInserir){
 bool ArvoreB::inserirNo(No* noAtual, std::string chaveAInserir, int posNoDisco, No* noFilho, No* noIrmao){
 	
 	int posInsercao = noAtual->insert(chaveAInserir, posNoDisco, noFilho);
-	std::cout<<"No: "<<noAtual->getPagina()<<" -> "<<"Chave "<<chaveAInserir<<" inserida na posicao "<<posInsercao<<std::endl;
-	print();
+	//std::cout<<"No: "<<noAtual->getPagina()<<" -> "<<"Chave "<<chaveAInserir<<" inserida na posicao "<<posInsercao<<std::endl;
 
 	if(noAtual == NULL)
 		return false;
 
 	if(noFilho != NULL){
 		//noAtual->setFilho(noFilho, posInsercao);
-		std::cout<<"No "<<noFilho->getPagina()<<" agora e filho de no "<< noAtual->getPagina()<<" na posicao "<<posInsercao<<std::endl;
+		//std::cout<<"No "<<noFilho->getPagina()<<" agora e filho de no "<< noAtual->getPagina()<<" na posicao "<<posInsercao<<std::endl;
 		noFilho->setPai(noAtual);
 
 		if(noIrmao != NULL) {
 			noAtual->setFilho(noIrmao, posInsercao+1);
-			std::cout<<"No "<<noIrmao->getPagina()<<" agora e filho de no "<< noAtual->getPagina()<<" na posicao "<<posInsercao+1<<std::endl;
+			//std::cout<<"No "<<noIrmao->getPagina()<<" agora e filho de no "<< noAtual->getPagina()<<" na posicao "<<posInsercao+1<<std::endl;
 			noIrmao->setPai(noAtual);
 			
 		}
@@ -195,7 +194,7 @@ bool ArvoreB::inserirNo(No* noAtual, std::string chaveAInserir, int posNoDisco, 
 
 	if(noAtual->getContador()>4){
 		if(noAtual->getPai()==NULL){
-			std::cout<<"Cria No pai"<<std::endl;
+			//std::cout<<"Cria No pai"<<std::endl;
 			No* pai = new No;
 			pai->setNivel(noAtual->getNivel()+1);
 			height = pai->getNivel();
@@ -203,24 +202,24 @@ bool ArvoreB::inserirNo(No* noAtual, std::string chaveAInserir, int posNoDisco, 
 			noMap[pai->getPagina()] = pai;
 
 		}
-		std::cout<<"Cria No irmao"<<std::endl;
+		//std::cout<<"Cria No irmao"<<std::endl;
 		No* irmao = new No;
 		irmao->setPai(noAtual->getPai());
 		irmao->setNivel(noAtual->getNivel());
 		noMap[irmao->getPagina()] = irmao;
 
-		std::cout<<"Inserir chave[2] no pai"<<std::endl;
+		//std::cout<<"Inserir chave[2] no pai"<<std::endl;
 		inserirNo(noAtual->getPai(), noAtual->getChave(2), noAtual->getPrr(2), noAtual, irmao);
 
-		std::cout<<"Inserir chave[3] no irmao"<<std::endl;
+		//std::cout<<"Inserir chave[3] no irmao"<<std::endl;
 		inserirNo(irmao, noAtual->getChave(3), noAtual->getPrr(3), noAtual->getFilho(3), NULL);
 
-		std::cout<<"Inserir chave[4] no irmao"<<std::endl;
+		//std::cout<<"Inserir chave[4] no irmao"<<std::endl;
 		inserirNo(irmao, noAtual->getChave(4), noAtual->getPrr(4), noAtual->getFilho(4), noAtual->getFilho(5));
 
 		for(int j = 4; j > 1; j--){
 
-			std::cout<<"Apagando "<<noAtual->getChave(j)<<" do No "<<noAtual->getPagina()<<std::endl;
+			//std::cout<<"Apagando "<<noAtual->getChave(j)<<" do No "<<noAtual->getPagina()<<std::endl;
 			noAtual->erase(noAtual->getChave(j));
 		}
 
@@ -237,10 +236,10 @@ int ArvoreB::getHeight(){
 	return height;
 }
 
-/*void ArvoreB::setNoVector(std::vector<No> nVec){
-	noVector = nVec;
+int ArvoreB::getPos(){
+	int pos=0;
+	for(int i = 0; i < (int)noMap.size(); i++){
+		pos+=noMap[i]->getContador();
+	}
+	return pos+1;
 }
-
-std::vector<No> ArvoreB::getNoVector(){
-	return noVector;
-}*/
